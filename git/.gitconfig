@@ -1,0 +1,22 @@
+[user]
+	name = lucia
+	email = luciacachn@gmail.com
+[core]
+  editor = vim
+	excludesfile = /Users/lucia/.gitignore
+	autocrlf = false
+[alias]
+  gst = "git status"
+  ga = "git add"
+  gpl = "git pull"
+  gps = "git push"
+  gbr = "git brach"
+  gco = "git checkout"
+  gl = "git log"
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = main
