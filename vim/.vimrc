@@ -38,6 +38,8 @@ filetype plugin indent on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+execute pathogen#infect()
+
 syntax on
 
 set nocompatible
@@ -114,15 +116,15 @@ vmap <leader>p "+p
 vmap <leader>P "+P
 
 " switch buffer, delete buffer
-map bn :bn<cr> " next
-map bp :bp<cr> " previous
-map bd :bd<cr> " destroy
+nnoremap bn :bn<cr> " next
+nnoremap bp :bp<cr> " previous
+nnoremap bd :bd<cr> " destroy
 
 " remap suspend
-nmap <c-s> :suspend<cr>
+nnoremap <c-s> :suspend<cr>
 
 " select word
-map <space> viw
+map <space> viw*<c-c>
 
 " edit and source vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -211,10 +213,4 @@ let g:deoplete#enable_at_startup = 1
 
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
-
-" Vimscript file settings
-augroup filetype_vim
-  autocmd!
-  autocmd FileType vim setlocal foldmethod=marker
-augroup END
 
