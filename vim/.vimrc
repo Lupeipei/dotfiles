@@ -108,12 +108,12 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 
 " copy & paste to system clipboard
-nmap <leader>p "+p
-nmap <leader>P "+P
-nmap <leader>yy "+yy
-vmap <leader>y "+y
-vmap <leader>p "+p
-vmap <leader>P "+P
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+nnoremap <leader>yy "+yy
+vnoremap <leader>y "+y
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 
 " switch buffer, delete buffer
 nnoremap bn :bn<cr> " next
