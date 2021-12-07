@@ -1,3 +1,6 @@
+" Add fzf installed by Homebrew
+set runtimepath+=/usr/local/opt/fzf
+
 " Add the dein installation directory into runtimepath
 set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 
@@ -9,13 +12,13 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('Shougo/denite.nvim')
 
   call dein#add('mattn/emmet-vim')
+  call dein#add('junegunn/fzf.vim')
 
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-commentary')
   call dein#add('tpope/vim-rails')
   call dein#add('tpope/vim-eunuch')
 
-  call dein#add('ctrlpvim/ctrlp.vim')
   call dein#add('eugen0329/vim-esearch')
 
   call dein#add('vim-airline/vim-airline')
@@ -23,7 +26,6 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('cormacrelf/vim-colors-github')
 
   call dein#add('preservim/nerdtree')
-  call dein#add('jamshedvesuna/vim-markdown-preview')
 
   call dein#add('tpope/vim-ruby')
   call dein#add('posva/vim-vue')
@@ -84,6 +86,9 @@ set showmatch
 
 " for Rails projects
 set directory=tmp,/tmp
+
+" prompt when switching buffer
+set hidden
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
@@ -165,9 +170,17 @@ let g:go_fmt_autosave = 1
 let g:go_imports_autosave = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" fzf
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <C-f> :Files<CR>
+
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  Denite
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " bebug when cannot install pynvim
+
 " if has('python_compiled')
 "   echo 'compiled with Python 2.x support'
 "   if has('python_dynamic')
@@ -184,23 +197,6 @@ let g:go_imports_autosave = 1
 
 set pyxversion=3
 
-" change file/rec command for Ripgrep
-" call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
-
-" Ripgrep command on grep source
-call denite#custom#var('grep', {
-        \ 'command': ['rg'],
-        \ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
-        \ 'recursive_opts': [],
-        \ 'pattern_opt': ['--regexp'],
-        \ 'separator': ['--'],
-        \ 'final_opts': [],
-        \ })
-
-" Define alias
-call denite#custom#alias('source', 'file/rec/git', 'file/rec')
-call denite#custom#var('file/rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
-
 " Autocomplete
 call dein#add('Shougo/deoplete.nvim')
 if !has('nvim')
@@ -213,4 +209,8 @@ let g:deoplete#enable_at_startup = 1
 
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
+
+" Define alias
+call denite#custom#alias('source', 'file/rec/git', 'file/rec')
+call denite#custom#var('file/rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
 
