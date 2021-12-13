@@ -1,41 +1,47 @@
 " Add fzf installed by Homebrew
 set runtimepath+=/usr/local/opt/fzf
 
-" Add the dein installation directory into runtimepath
-set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
+call plug#begin()
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'Shougo/denite.nvim'
 
-if dein#load_state('$HOME/.cache/dein')
-  call dein#begin('$HOME/.cache/dein')
+  Plug 'mattn/emmet-vim'
+  Plug 'junegunn/fzf.vim'
+  Plug 'vim-scripts/bufexplorer.zip'
 
-  call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
-  call dein#add('Shougo/deoplete.nvim')
-  call dein#add('Shougo/denite.nvim')
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-rails'
+  Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-fugitive'
 
-  call dein#add('mattn/emmet-vim')
-  call dein#add('junegunn/fzf.vim')
+  Plug 'eugen0329/vim-esearch'
 
-  call dein#add('tpope/vim-surround')
-  call dein#add('tpope/vim-commentary')
-  call dein#add('tpope/vim-rails')
-  call dein#add('tpope/vim-eunuch')
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'cormacrelf/vim-colors-github'
 
-  call dein#add('eugen0329/vim-esearch')
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'preservim/nerdtree'
 
-  call dein#add('vim-airline/vim-airline')
-  call dein#add('vim-airline/vim-airline-themes')
-  call dein#add('cormacrelf/vim-colors-github')
+  Plug 'posva/vim-vue'
+  Plug 'fatih/vim-go'
 
-  call dein#add('preservim/nerdtree')
+  Plug 'Shougo/deoplete.nvim'
+  if !has('nvim')
+    " Vim 8 only
+    pythonx import pynvim 
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+  endif
+  let g:deoplete#enable_at_startup = 1
 
-  call dein#add('tpope/vim-ruby')
-  call dein#add('posva/vim-vue')
-  call dein#add('fatih/vim-go')
+  Plug 'Shougo/neosnippet.vim'
+  Plug 'Shougo/neosnippet-snippets'
 
-  call dein#end()
-  call dein#save_state()
-endif
+call plug#end()
 
-filetype plugin indent on
+set pyxversion=3
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
@@ -172,7 +178,12 @@ let g:go_imports_autosave = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fzf
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <C-f> :Files<CR>
+nnoremap <silent> <c-p> :Files<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>/ :BLines<CR>
+nnoremap <silent> <leader>hh :History<CR>
+nnoremap <silent> <leader>h: :History:<CR>
+nnoremap <silent> <leader>h/ :History/<CR>
 
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 
@@ -194,23 +205,4 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 "     echo 'Python 3.x dynamically loaded'
 "   endif
 " endif
-
-set pyxversion=3
-
-" Autocomplete
-call dein#add('Shougo/deoplete.nvim')
-if !has('nvim')
-  " Vim 8 only
-  pythonx import pynvim 
-  call dein#add('roxma/nvim-yarp')
-  call dein#add('roxma/vim-hug-neovim-rpc')
-endif
-let g:deoplete#enable_at_startup = 1
-
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets')
-
-" Define alias
-call denite#custom#alias('source', 'file/rec/git', 'file/rec')
-call denite#custom#var('file/rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
 
