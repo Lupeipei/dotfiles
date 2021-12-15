@@ -2,12 +2,9 @@
 set runtimepath+=/usr/local/opt/fzf
 
 call plug#begin()
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'Shougo/denite.nvim'
-
   Plug 'mattn/emmet-vim'
   Plug 'junegunn/fzf.vim'
-  Plug 'vim-scripts/bufexplorer.zip'
+  Plug 'preservim/nerdtree'
 
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
@@ -21,27 +18,19 @@ call plug#begin()
   Plug 'vim-airline/vim-airline-themes'
   Plug 'cormacrelf/vim-colors-github'
 
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'preservim/nerdtree'
-
   Plug 'posva/vim-vue'
-  Plug 'fatih/vim-go'
+  Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 
+  " neosnippet
   Plug 'Shougo/deoplete.nvim'
-  if !has('nvim')
-    " Vim 8 only
-    pythonx import pynvim 
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-  endif
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
   let g:deoplete#enable_at_startup = 1
 
   Plug 'Shougo/neosnippet.vim'
   Plug 'Shougo/neosnippet-snippets'
 
 call plug#end()
-
-set pyxversion=3
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
@@ -96,50 +85,53 @@ set directory=tmp,/tmp
 " prompt when switching buffer
 set hidden
 
+" default python version 3
+" set pyxversion=3
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " disable up, down, leaf, right
 " normal mode
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 
 " visual mode
-vnoremap <up> <nop>
-vnoremap <down> <nop>
-vnoremap <left> <nop>
-vnoremap <right> <nop>
+vnoremap <Up> <Nop>
+vnoremap <Down> <Nop>
+vnoremap <Left> <Nop>
+vnoremap <Right> <Nop>
 
 " insert mode
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
 
 " copy & paste to system clipboard
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-nnoremap <leader>yy "+yy
-vnoremap <leader>y "+y
-vnoremap <leader>p "+p
-vnoremap <leader>P "+P
+nnoremap <Leader>p "+p
+nnoremap <Leader>P "+P
+nnoremap <Leader>yy "+yy
+vnoremap <Leader>y "+y
+vnoremap <Leader>p "+p
+vnoremap <Leader>P "+P
 
 " switch buffer, delete buffer
-nnoremap bn :bn<cr> " next
-nnoremap bp :bp<cr> " previous
-nnoremap bd :bd<cr> " destroy
+nnoremap bn :bn<CR> " next
+nnoremap bp :bp<CR> " previous
+nnoremap bd :bd<CR> " destroy
 
-" remap suspend
-nnoremap <c-s> :suspend<cr>
+" suspend
+nnoremap <C-s> :suspend<CR>
 
-" select word
-map <space> viw*<c-c>
+" highlight all occurrences of selected word 
+map <Space> viw*<Esc>
 
 " edit and source vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <Leader>sv :source $MYVIMRC<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Themes, font
@@ -159,50 +151,18 @@ let g:lightline = { 'colorscheme': 'github' }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeWinPos = 'left'
 let NERDTreeShowHidden = 1
-map <leader>n :NERDTreeToggle<cr>
-map <leader>r :NERDTreeFind<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Markdown
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let vim_markdown_preview_github=1
-let g:vim_markdown_preview_browser="Google Chrome"
-let vim_markdown_preview_hotkey='<C-m>'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" go-settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:go_fmt_autosave = 1
-let g:go_imports_autosave = 1
+nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <Leader>r :NERDTreeFind<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fzf
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <c-p> :Files<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>/ :BLines<CR>
-nnoremap <silent> <leader>hh :History<CR>
-nnoremap <silent> <leader>h: :History:<CR>
-nnoremap <silent> <leader>h/ :History/<CR>
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>/ :BLines<CR>
+nnoremap <silent> <Leader>hh :History<CR>
+nnoremap <silent> <Leader>h: :History:<CR>
+nnoremap <silent> <Leader>h/ :History/<CR>
 
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  Denite
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" bebug when cannot install pynvim
-
-" if has('python_compiled')
-"   echo 'compiled with Python 2.x support'
-"   if has('python_dynamic')
-"     echo 'Python 2.x dynamically loaded'
-"   endif
-" endif
-
-" if has('python3_compiled')
-"   echo 'compiled with Python 3.x support'
-"   if has('python3_dynamic')
-"     echo 'Python 3.x dynamically loaded'
-"   endif
-" endif
 
