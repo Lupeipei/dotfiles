@@ -93,10 +93,10 @@ set hidden
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " disable up, down, leaf, right
 " normal mode
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
 
 " visual mode
 vnoremap <Up> <Nop>
@@ -127,7 +127,7 @@ nnoremap bd :bd<CR> " destroy
 nnoremap <C-s> :suspend<CR>
 
 " highlight all occurrences of selected word 
-map <Space> viw*<Esc>
+nnoremap <Space> viw*<Esc>
 
 " edit and source vimrc
 nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
