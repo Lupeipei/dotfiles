@@ -146,6 +146,12 @@ colorscheme github
 let g:airine_theme="github"
 let g:lightline = { 'colorscheme': 'github' }
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Autocmd
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" formatted when open json file, require jq installed.
+autocmd BufRead *.json %!jq '.'
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NerdTree
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
