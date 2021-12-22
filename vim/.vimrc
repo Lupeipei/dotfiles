@@ -133,6 +133,9 @@ nnoremap <Space> viw*<Esc>
 nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 
+" edit tmux
+nnoremap <Leader>et :vsplit $HOME/.tmux.conf<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Themes, font
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
