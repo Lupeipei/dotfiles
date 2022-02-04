@@ -13,13 +13,14 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
 
   Plug 'eugen0329/vim-esearch'
+  Plug 't9md/vim-quickhl'
 
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'cormacrelf/vim-colors-github'
 
   Plug 'posva/vim-vue'
-  Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
+  " Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 
   " neosnippet
   Plug 'Shougo/deoplete.nvim'
@@ -127,7 +128,7 @@ nnoremap bd :bd<CR> " destroy
 nnoremap <C-s> :suspend<CR>
 
 " highlight all occurrences of selected word 
-nnoremap <Space> viw*<Esc>
+" nnoremap <Space> viw*<Esc>
 
 " edit and source vimrc
 nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
@@ -135,6 +136,11 @@ nnoremap <Leader>sv :source $MYVIMRC<CR>
 
 " edit tmux
 nnoremap <Leader>et :vsplit $HOME/.tmux.conf<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Abbreviations
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+iabbrev ned end
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Themes, font
@@ -162,6 +168,25 @@ let g:NERDTreeWinPos = 'left'
 let NERDTreeShowHidden = 1
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>r :NERDTreeFind<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" quickhl
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Space>m <Plug>(quickhl-manual-this)
+xmap <Space>m <Plug>(quickhl-manual-this)
+
+nmap <Space>w <Plug>(quickhl-manual-this-whole-word)
+xmap <Space>w <Plug>(quickhl-manual-this-whole-word)
+
+nmap <Space>c <Plug>(quickhl-manual-clear)
+vmap <Space>c <Plug>(quickhl-manual-clear)
+
+nmap <Space>M <Plug>(quickhl-manual-reset)
+xmap <Space>M <Plug>(quickhl-manual-reset)
+
+nmap <Space>j <Plug>(quickhl-cword-toggle)
+nmap <Space>] <Plug>(quickhl-tag-toggle)
+map H <Plug>(operator-quickhl-manual-this-motion)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fzf
