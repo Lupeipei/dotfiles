@@ -7,12 +7,9 @@
 	autocrlf = false
 [alias]
   gst = "git status"
-  ga = "git add"
-  gpl = "git pull"
-  gps = "git push"
-  gbr = "git branch"
   gco = "git checkout"
-  gl = "git log"
+  df = "diff"
+  dt = "difftool"
   logline = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -21,3 +18,9 @@
 	required = true
 [init]
 	defaultBranch = main
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[difftool "vimdiff"]
+	cmd = vimdiff "$LOCAL" "$REMOTE"
