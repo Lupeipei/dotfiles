@@ -124,6 +124,9 @@ nnoremap bn :bn<CR> " next
 nnoremap bp :bp<CR> " previous
 nnoremap bd :bd<CR> " destroy
 
+" clear buffer list except current one
+nnoremap bcc :%bd\|e#<CR>
+
 " suspend
 nnoremap <C-s> :suspend<CR>
 
