@@ -10,7 +10,7 @@
   ga = "git add"
   gpl = "git pull"
   gps = "git push"
-  gbr = "git brach"
+  gbr = "git branch"
   gco = "git checkout"
   gl = "git log"
 [filter "lfs"]
