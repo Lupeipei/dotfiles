@@ -163,6 +163,7 @@ let g:lightline = { 'colorscheme': 'github' }
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " formatted when open json file, require jq installed.
 autocmd BufRead *.json %!jq '.'
+autocmd BufRead *.sql %!pg_format
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NerdTree
