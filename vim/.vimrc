@@ -14,6 +14,7 @@ call plug#begin()
 
   Plug 'eugen0329/vim-esearch'
   Plug 't9md/vim-quickhl'
+  Plug 'iamcco/markdown-preview.nvim' 
 
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
