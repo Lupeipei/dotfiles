@@ -24,3 +24,5 @@
 	prompt = false
 [difftool "vimdiff"]
 	cmd = vimdiff "$LOCAL" "$REMOTE"
+[url "https://github.com/"]
+	insteadOf = git@github.com:
